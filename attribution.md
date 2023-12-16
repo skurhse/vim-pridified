@@ -1,0 +1,1 @@
+The Vim logos herein are modified versions of [Vimlogo.svg](https://upload.wikimedia.org/wikipedia/commons/9/9f/Vimlogo.svg) by User:D0ktorz, licensed under [GPL](http://www.gnu.org/licenses/gpl.html) via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Vimlogo.svg). Special thanks to avalonv and the transprogrammer Discord for inspiring these images.
