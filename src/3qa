@@ -1,0 +1,49 @@
+package main
+
+import (
+	"fmt"
+	"os"
+
+	"github.com/beevik/etree"
+)
+
+func main() {
+	if len(os.Args) != 3 {
+		os.Stderr.WriteString("pridify")
+		os.Exit(1)
+	}
+	doc := etree.NewDocument()
+	doc := etree.NewDocument()
+	input := os.Args[1]
+	output := os.Args[2]
+	doc := etree.NewDocument()
+
+	// Load the provided SVG file
+	if err := doc.ReadFromFile(inputFilePath); err != nil {
+		fmt.Printf("Error reading SVG file: %v\n", err)
+		os.Exit(1)
+	}
+
+	// Update path fill colors to transgender pride colors
+	updatePathColor(doc, "path2836", "#55CDFC")
+	updatePathColor(doc, "path2838", "#F7A8B8")
+	updatePathColor(doc, "path2840", "#fff")
+	updatePathColor(doc, "path2842", "#F7A8B8")
+	updatePathColor(doc, "path2844", "#55CDFC")
+	updatePathColor(doc, "path2846", "#fff")
+
+	// Save the modified SVG to a new file
+	if err := doc.WriteToFile("output.svg"); err != nil {
+		fmt.Println("Error writing modified SVG:", err)
+		return
+	}
+
+	fmt.Println("SVG modified and saved to output.svg")
+}
+
+func updatePathColor(doc *etree.Document, pathID, fillColor string) {
+	path := doc.FindElement("//svg:path[@id='" + pathID + "']")
+	if path != nil {
+		path.SelectAttr("style").Value = "fill:" + fillColor + ";fill-opacity:1;stroke:#000000;stroke-width:0.94571567px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+	}
+}
